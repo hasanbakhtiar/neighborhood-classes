@@ -1,0 +1,36 @@
+<%- include('./partials/header') %>
+  <section class="product-list">
+    <h1 class="container text-center text-danger my-5">Product List Page</h1>
+    <div class="container">
+      <div class="row">
+        <%if (products.length===0) { %>
+          <p class="alert alert-danger">no product</p>
+          <%}else {%>
+            <% products.map(element=> { %>
+              <div class="col-12 col-sm-6 col-md-4">
+                <div class="card">
+                    <img src="<%= element.image %>" style="height: 300px; object-fit: cover;" class="card-img-top"
+                      alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <%= element.title %>
+                      </h5>
+                      <p class="card-text">$<%= element.price %>
+                      </p>
+                      <%if (element.active) { %>
+                      <a href="#" class="btn btn-success">Read more</a>
+                      <% }else{ %>
+                        <a href="#"  class="disabled btn btn-secondary">No Active</a>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+                  <% }); %>
+                    <% } %>
+
+
+      </div>
+    </div>
+
+  </section>
+  <%- include('./partials/footer') %>
